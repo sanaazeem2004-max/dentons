@@ -1,0 +1,56 @@
+{
+ "desktop": {
+  "height": 9587,
+  "overflowX": 0,
+  "wideEls": [
+   "DIV.absolute -inset-x-6 -inset-y-6 -z-10",
+   "DIV.size-full",
+   "DIV.size-full",
+   "IMG.size-full object-cover object-center motion-safe:animate-[ke",
+   "SPAN.pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradi"
+  ],
+  "brokenImgs": [],
+  "imgCount": 26,
+  "links": 94,
+  "emptyLinks": 0,
+  "noAccessibleName": 0,
+  "h1": 1,
+  "errors": []
+ },
+ "tablet": {
+  "height": 12970,
+  "overflowX": 0,
+  "wideEls": [
+   "DIV.absolute -inset-x-6 -inset-y-6 -z-10",
+   "DIV.size-full",
+   "DIV.size-full",
+   "IMG.size-full object-cover object-center motion-safe:animate-[ke",
+   "SPAN.pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradi"
+  ],
+  "brokenImgs": [],
+  "imgCount": 26,
+  "links": 94,
+  "emptyLinks": 0,
+  "noAccessibleName": 0,
+  "h1": 1,
+  "errors": []
+ },
+ "mobile": {
+  "height": 15216,
+  "overflowX": 0,
+  "wideEls": [
+   "DIV.absolute -inset-x-6 -inset-y-6 -z-10",
+   "DIV.size-full",
+   "DIV.size-full",
+   "IMG.size-full object-cover object-center motion-safe:animate-[ke",
+   "SPAN.pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradi"
+  ],
+  "brokenImgs": [],
+  "imgCount": 26,
+  "links": 94,
+  "emptyLinks": 0,
+  "noAccessibleName": 0,
+  "h1": 1,
+  "errors": []
+ }
+}

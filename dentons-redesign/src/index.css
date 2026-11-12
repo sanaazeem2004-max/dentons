@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-ink: #0d0c10;
+  --color-panel: #16141a;
+  --color-panel-2: #1f1c24;
+  --color-panel-3: #29252f;
+  --color-line: rgb(255 255 255 / 0.09);
+  --color-muted: #aaa4b2;
+  --color-soft: #d8d3de;
+
+  /* Dentons purple (#702082) is the anchor of the brand scale */
+  --color-brand: #702082;
+  --color-brand-700: #571866;
+  --color-brand-500: #8a35a0;
+  --color-brand-400: #a457bb;
+  --color-brand-300: #c48fd6;
+  --color-brand-200: #e2c8ec;
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink text-white font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    @apply bg-brand text-white;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-300);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/*
+  One alignment system for the whole page.
+  --gutter : outer margin of inset panels
+  --pad    : content inset from the viewport edge
+  --cx     : resolved content inset (grows on very wide screens to cap width at --maxw)
+  Content inside an inset panel subtracts the gutter, so every section's text
+  starts on exactly the same vertical line as the header logo.
+*/
+:root {
+  --gutter: 8px;
+  --pad: 20px;
+  --maxw: 1440px;
+  --cx: max(var(--pad), calc((100vw - var(--maxw)) / 2));
+}
+@media (min-width: 640px) { :root { --gutter: 12px; --pad: 32px; } }
+@media (min-width: 768px) { :root { --gutter: 16px; } }
+@media (min-width: 1024px) { :root { --pad: 40px; } }
+@media (min-width: 1280px) { :root { --pad: 48px; } }
+
+@layer components {
+  .container-x {
+    width: 100%;
+    padding-inline: var(--cx);
+  }
+  .panel .container-x,
+  .inset .container-x {
+    padding-inline: calc(var(--cx) - var(--gutter));
+  }
+  .panel {
+    @apply rounded-[22px] bg-panel md:rounded-[30px];
+    margin-inline: var(--gutter);
+  }
+  .inset {
+    margin-inline: var(--gutter);
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-[0.75rem] font-medium uppercase tracking-[0.2em] text-brand-300;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-6 bg-brand-400;
+  }
+  .h-display {
+    @apply font-light tracking-[-0.035em] leading-[1.02];
+  }
+  .h-section {
+    @apply text-[2rem] font-light leading-[1.08] tracking-[-0.03em] sm:text-[2.6rem] lg:text-[3.25rem];
+  }
+  .accent {
+    @apply font-serif italic font-normal tracking-[-0.01em] text-brand-200;
+  }
+  .btn, .btn-primary, .btn-light, .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-6 py-3.5 text-[0.9375rem] font-medium transition-all duration-300 ease-[var(--ease-premium)];
+  }
+  .btn-primary {
+    @apply bg-brand text-white hover:bg-brand-500 shadow-[0_10px_30px_-10px_rgb(112_32_130/0.8)];
+  }
+  .btn-light {
+    @apply bg-white text-ink hover:bg-brand-200;
+  }
+  .btn-ghost {
+    @apply border border-white/20 text-white hover:border-white/50 hover:bg-white/5;
+  }
+  /* Small circular arrow chip used on cards (reference "More details" pill) */
+  .chip-arrow {
+    @apply grid size-9 shrink-0 place-items-center rounded-full bg-white text-ink transition-all duration-300 ease-[var(--ease-premium)];
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+@keyframes ping-soft {
+  0% { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(3.2); opacity: 0; }
+}
+
+/* Hero: slow ambient drift on the photograph */
+@keyframes ken-burns {
+  0% { transform: scale(1) translate3d(0, 0, 0); }
+  100% { transform: scale(1.09) translate3d(-1.5%, -1%, 0); }
+}
+/* Light sweep across the purple action band */
+@keyframes sweep {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  60%, 100% { transform: translateX(320%) skewX(-20deg); }
+}
+/* Gentle float for hero chips */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+/* Scroll cue */
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(22px); opacity: 0; }
+}

@@ -1,0 +1,21 @@
+PASS  Mega menu opens on hover
+PASS  Mega menu switches to Insights
+PASS  Mega menu closes
+PASS  Language dropdown lists 7 languages
+PASS  French link targets dentons.com/fr
+PASS  Search returns results for "energy"  — 3 links
+PASS  Search closes with Escape
+PASS  "/" shortcut opens search
+PASS  Header becomes sticky/solid on scroll
+PASS  Industries tab shows 6 items
+PASS  Practice filter "tax" narrows list
+PASS  Empty state shows for no match
+PASS  Region filter shows Asia Pacific countries
+PASS  Map tooltip appears on hover
+PASS  Find a Lawyer opens Dentons people search  — https://www.dentons.com/en/our-professionals?Filters=%26sectorid%3D%26practiceid%3D%26positionid%3D%26language
+PASS  No console/page errors (desktop)
+PASS  Mobile menu opens
+PASS  Mobile accordion expands Practices
+PASS  Mobile menu closes
+PASS  Hero CTA scrolls to capabilities  — top=96
+PASS  Reduced motion: hero headline not transformed  — none
